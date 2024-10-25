@@ -15,11 +15,20 @@ export class DetailsComponent {
   housingService = inject(HousingLocationService)
   housingLocation: HousingLocation | undefined;
 
-  constructor() {
-    // Extract the id that is passed in the route
-    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
-    // we need to call the housing service to extract the id - we need to create that method...go to the service now
+  // constructor() {
+  //   // Extract the id that is passed in the route
+  //   const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+  //   // we need to call the housing service to extract the id - we need to create that method...go to the service now
 
-    this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+  //   this.housingLocation = this.housingService.getHousingLocationById(housingLocationId);
+  // }
+  
+  constructor() {
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+    this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
+      this.housingLocation = housingLocation;
+    });
   }
+
+
 }

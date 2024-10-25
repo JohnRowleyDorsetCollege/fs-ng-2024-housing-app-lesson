@@ -3,7 +3,7 @@ import { HousingLocation } from '../models/housing-location';
 @Injectable({
   providedIn: 'root',
 })
-export class HousingService {
+export class HousingLocationService {
   url = 'http://localhost:3000/locations';
   async getAllHousingLocations(): Promise<HousingLocation[]> {
     const data = await fetch(this.url);
